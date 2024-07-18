@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +27,11 @@ SECRET_KEY = 'django-insecure-1c^iz$xj-7g#=2b8-du3c^&w!9q$=y)a945cs6w&7zivfvd+b_
 DEBUG = False
 
 ALLOWED_HOSTS = [
+    'https://localhost:8000/',
     'http://localhost:8000/',
+    'https://127.0.0.1:8000/',
     'http://127.0.0.1:8000/',
+    'https://52.89.239.45:8000/',
     'http://52.89.239.45:8000/',
     '*',
 ]
@@ -44,6 +49,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'myRouletteAPI',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -132,3 +138,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True

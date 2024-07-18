@@ -34,7 +34,7 @@ def search(request, title):
         previousResults = data['results']
         return Response(data)
     else:
-        return Response({'error': 'An error occurred while fetching data.'})
+        return Response({'error': f'An error occurred while fetching data. Status code: {status} Error: {response.text} {response.reason}'})
 
 @api_view(['GET'])
 def details(request, movieId):
