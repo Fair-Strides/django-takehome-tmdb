@@ -19,9 +19,9 @@ def search(request, title):
     if(title == '__'):
         previousTerm = ''
         previousResults = []
-        return Response({'data': {'results': []}})
+        return Response({'results': []})
     elif(title == previousTerm or title == 'none'):
-        return Response({'data': {'results': previousResults}})
+        return Response({'results': previousResults})
     
     previousTerm = title
     apiKey = os.environ.get('TMDB_API_KEY')
@@ -39,7 +39,7 @@ def search(request, title):
 @api_view(['GET'])
 def details(request, movieId):
     if(movieId == -1):
-        return Response({'data': {'data': {}}})
+        return Response({'data': {}})
     
 
     apiKey = os.environ.get('TMDB_API_KEY')
